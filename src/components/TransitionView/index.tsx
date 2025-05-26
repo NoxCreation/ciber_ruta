@@ -33,7 +33,7 @@ const TransitionView = () => {
 const renderView = (viewId: number) => {
     switch (viewId) {
         case 0: return (
-            <Stack flexDir={'column'} h={'100%'} >
+            <Stack flexDir={'column'} h={'100%'}>
                 <ViewHome />
                 <ButtonBarRecord />
             </Stack>

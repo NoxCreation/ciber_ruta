@@ -45,7 +45,6 @@ export const ContentView = ({
             {/* Contenedor de mensajes con scroll */}
             <Box
                 ref={chatContainerRef}
-                p={4}
                 height="100%"
                 overflowY="auto"
                 css={{

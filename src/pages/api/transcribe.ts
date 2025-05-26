@@ -4,7 +4,6 @@ import fs from "fs"
 import axios from "axios"
 
 // URL del servidor FastAPI
-const TRANSCRIPTION_SERVICE_URL = "http://194.163.45.115:2520/transcribe"
 
 // Configuración para deshabilitar el bodyParser predeterminado
 export const config = {
@@ -54,7 +53,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     // Enviar el FormData al servidor FastAPI usando axios
     console.log("Enviando audio al servidor de transcripción...")
-    const response = await axios.post(TRANSCRIPTION_SERVICE_URL, formData, {
+    const response = await axios.post(process.env.TRANSCRIPTION_SERVICE_URL as string, formData, {
       headers: {
         "Content-Type": "multipart/form-data",
       },

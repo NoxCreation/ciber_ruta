@@ -12,6 +12,9 @@ export const MenuRouter = () => {
                     <Tabs.Trigger value="projects" onClick={() => useViewChange.getState().setView(1)}>
                         Sobre Este Proyecto
                     </Tabs.Trigger>
+                    <Tabs.Trigger value="login" onClick={() => useViewChange.getState().setView(3)}>
+                        Profile
+                    </Tabs.Trigger>
                 </Tabs.List>
             </Tabs.Root>
         </Stack>

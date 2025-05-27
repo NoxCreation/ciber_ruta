@@ -5,6 +5,7 @@ import { Stack } from '@chakra-ui/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ButtonBarRecord } from '../ButtonBarRecord';
 import { ViewAbout } from '@/views/about';
+import { ViewProfile } from '@/views/profile';
 
 const TransitionView = () => {
     const { viewShow } = useViewChange();
@@ -40,6 +41,7 @@ const renderView = (viewId: number) => {
         );
         case 1: return <ViewAbout />;
         case 2: return <ViewMap />;
+        case 3: return <ViewProfile />;
         default: return null;
     }
 };

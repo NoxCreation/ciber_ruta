@@ -95,7 +95,7 @@ export const Login = () => {
         <Separator variant="dashed" />
 
         <Text textStyle="sm" color="fg.muted" textAlign="center">
-          Don't have an account? <Link href="#">Sign up</Link>
+          Don&apos;t have an account? <Link href="#">Sign up</Link>
         </Text>
       </Stack>
     </Container>

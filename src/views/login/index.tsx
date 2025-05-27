@@ -5,8 +5,8 @@ export const ViewLogin = () => {
   return (
     <ContentView
       chat={undefined}
-      topGradientPercent={10}
-      bottomGradientPercent={10}
+      topGradientPercent={0}
+      bottomGradientPercent={0}
     >
       <Login />
     </ContentView>

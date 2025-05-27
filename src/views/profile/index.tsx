@@ -1,5 +1,5 @@
 import { Logo } from "@/components/Login/logo";
-import { useAuth } from "@/components/Providers/AuthProvider";
+import { useAuth } from "@/Providers/AuthProvider";
 import {
   Container,
   Field,

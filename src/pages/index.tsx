@@ -3,8 +3,8 @@ import { Button, Stack } from "@chakra-ui/react";
 
 import TransitionView from "../components/TransitionView";
 import { MenuRouter } from "@/components/MenuRouter";
-import { useAuth } from "@/components/Providers/AuthProvider";
-import ProtectedRoute from "@/components/Providers/ProtectedRoute";
+import { useAuth } from "@/Providers/AuthProvider";
+import ProtectedRoute from "@/Providers/ProtectedRoute";
 
 export default function ViewContainer() {
   const { logout } = useAuth();

@@ -1,9 +1,8 @@
 import { Logo } from "./logo";
-import { PasswordInput } from "@/components/ui/password-input";
+/* import { PasswordInput } from "@/components/ui/password-input"; */
 import {
   Button,
   Container,
-  Checkbox,
   Field,
   HStack,
   Heading,
@@ -11,57 +10,28 @@ import {
   Link,
   Stack,
   Text,
+  Separator,
+  VStack,
 } from "@chakra-ui/react";
-import { BsGoogle } from "react-icons/bs";
-import { useAuth } from "../Providers/AuthProvider";
+import { BsArrowRight, BsGoogle } from "react-icons/bs";
+import { useAuth } from "../../Providers/AuthProvider";
 
-export const Login = () => {  
+export const Login = () => {
   const { login, profile } = useAuth();
 
   return (
-    <Container maxW="md" py={{ base: "12", md: "24" }}>
+    <Container maxW="md" py={{ base: '12', md: '24' }}>
       <Stack gap="8">
-        <Stack display="flex" alignItems="center">
+        <VStack gap="12">
           <Logo />
-        </Stack>
-
-        <Stack gap={{ base: "2", md: "3" }} textAlign="center">
-          <Heading
-            size={{ base: "2xl", md: "3xl" }}
-            style={{ color: "#283c77" }}
-          >
-            Welcome back
-          </Heading>
-          <Text color="fg.muted">Start using Chakra in your projects</Text>
-        </Stack>
+          <VStack gap="2">
+            <Heading size="2xl" style={{ color: "#283c77" }}>Sign in to your account</Heading>
+            <Text color="fg.muted">Welcome back! Please sign in to continue.</Text>
+          </VStack>
+        </VStack>
 
         <Stack gap="6">
-          <Stack gap="5">
-            <Field.Root>
-              <Field.Label style={{ color: "#1f2d59" }}>Email</Field.Label>
-              <Input type="email" />
-            </Field.Root>
-            <Field.Root>
-              <Field.Label style={{ color: "#1f2d59" }}>Password</Field.Label>
-              <PasswordInput />
-            </Field.Root>
-          </Stack>
-          <HStack justify="space-between">
-            <Checkbox.Root defaultChecked>
-              <Checkbox.HiddenInput />
-              <Checkbox.Control
-                style={{ background: "#283c77", borderColor: "#283c77" }}
-              />
-              <Checkbox.Label style={{ color: "#1f2d59" }}>
-                Remember me
-              </Checkbox.Label>
-            </Checkbox.Root>
-            <Button variant="plain" size="sm" style={{ color: "#1f2d59" }}>
-              Forgot password
-            </Button>
-          </HStack>
-          <Stack gap="4">
-            <Button style={{ background: "#283c77" }}>Sign in</Button>
+          <HStack gap="4" colorPalette="gray">
             {profile ? (
               <Button
                 style={{
@@ -93,24 +63,39 @@ export const Login = () => {
                   <p>Name: {profile.name}</p>
                 </Stack>
               </Button>
-            ) : (
-              <Button
-                style={{ color: "#283c77" }}
-                variant="outline"
-                onClick={() => login()}
-              >
-                <BsGoogle />
-                Sign in with Google
-              </Button>
-            )}
+            ) : <Button variant="outline" flex="1" onClick={() => login()} style={{ color: "#283c77" }}>
+              <BsGoogle />
+              Google
+            </Button>}
+            {/* <Button variant="outline" flex="1">
+              <BsGithub />
+              Github
+            </Button> */}
+          </HStack>
+
+          <HStack>
+            <Separator flex="1" />
+            <Text color="fg.muted" textStyle="sm">
+              or
+            </Text>
+            <Separator flex="1" />
+          </HStack>
+
+          <Stack gap="6">
+            <Field.Root>
+              <Field.Label style={{ color: "#1f2d59" }}>Email address</Field.Label>
+              <Input placeholder="me@example.com" />
+            </Field.Root>
+            <Button style={{ background: "#283c77" }}>
+              Continue <BsArrowRight />
+            </Button>
           </Stack>
         </Stack>
 
+        <Separator variant="dashed" />
+
         <Text textStyle="sm" color="fg.muted" textAlign="center">
-          {"Don't have an account?"}{" "}
-          <Link variant="underline" href="#">
-            Sign up
-          </Link>
+          Don't have an account? <Link href="#">Sign up</Link>
         </Text>
       </Stack>
     </Container>

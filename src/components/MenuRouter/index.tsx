@@ -1,7 +1,16 @@
 import { Stack, Tabs } from "@chakra-ui/react"
 import useViewChange from "@/hooks/useViewChange";
+import { signOut } from "next-auth/react";
+import { useRouter } from "next/router";
 
 export const MenuRouter = () => {
+    const route = useRouter()
+
+    const onSignOut = async () => {
+        await signOut({ callbackUrl: "/auth", redirect: false });
+        route.push("/auth")
+    };
+
     return (
         <Stack alignItems={'center'}>
             <Tabs.Root defaultValue="members" variant={'enclosed'}>
@@ -14,6 +23,9 @@ export const MenuRouter = () => {
                     </Tabs.Trigger>
                     <Tabs.Trigger value="login" onClick={() => useViewChange.getState().setView(3)}>
                         Profile
+                    </Tabs.Trigger>
+                    <Tabs.Trigger value="logout" onClick={onSignOut}>
+                        Salir
                     </Tabs.Trigger>
                 </Tabs.List>
             </Tabs.Root>

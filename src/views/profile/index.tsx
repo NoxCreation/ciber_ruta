@@ -1,16 +1,12 @@
-import { Logo } from "@/components/Login/logo";
-import { useAuth } from "@/Providers/AuthProvider";
+import { Logo } from "@/views/login/logo";
 import {
   Container,
   Field,
   Heading,
-  Input,
   Stack,
 } from "@chakra-ui/react";
-import { BsGoogle } from "react-icons/bs";
 
 export const ViewProfile = () => {
-  const { profile } = useAuth();
 
   return (
     <Container maxW="md" py={{ base: "12", md: "24" }}>
@@ -37,7 +33,7 @@ export const ViewProfile = () => {
               alignItems: "center",
             }}
           >
-            {profile?.picture ? (
+            {/* {profile?.picture ? (
               <img
                 src={profile?.picture}
                 alt="user image"
@@ -45,16 +41,16 @@ export const ViewProfile = () => {
               />
             ) : (
               <BsGoogle />
-            )}
+            )} */}
           </Stack>
           <Stack gap="5">
             <Field.Root>
               <Field.Label style={{ color: "#1f2d59" }}>Name</Field.Label>
-              <Input disabled type="text" value={profile?.name || ""} />
+              {/* <Input disabled type="text" value={profile?.name || ""} /> */}
             </Field.Root>
             <Field.Root>
               <Field.Label style={{ color: "#1f2d59" }}>Email</Field.Label>
-              <Input disabled type="email" value={profile?.email || ""} />
+              {/* <Input disabled type="email" value={profile?.email || ""} /> */}
             </Field.Root>
           </Stack>
         </Stack>

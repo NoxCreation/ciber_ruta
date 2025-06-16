@@ -1,10 +1,12 @@
 import { LayoutApp } from "@/components/LayoutApp";
+import { Manager } from "@/utils/engine";
 import { ViewLogin } from "@/views/login";
 import { Stack } from "@chakra-ui/react";
+import { GetServerSideProps } from "next";
 
 export default function ViewContainer() {
   return (
-    <LayoutApp title="Ciber Ruta">
+    <LayoutApp title="Login">
       <Stack
         alignItems={"center"}
         h={"100vh"}
@@ -19,9 +21,23 @@ export default function ViewContainer() {
           position="relative"
           gap={0}
         >
+
           <ViewLogin />
         </Stack>
       </Stack>
     </LayoutApp>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+
+  // Sincronizando modelos cuando se entra en el login
+  await Manager()
+
+  return {
+    props: {
+
+    }
+  }
+
 }

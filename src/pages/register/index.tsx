@@ -1,15 +1,14 @@
-import { LayoutApp } from "../components/LayoutApp";
+import { LayoutApp } from "@/components/LayoutApp";
+import { Manager } from "@/utils/engine";
+import { ViewRegister } from "@/views/register";
 import { Stack } from "@chakra-ui/react";
-import TransitionView from "../components/TransitionView";
-import { MenuRouter } from "@/components/MenuRouter";
+import { GetServerSideProps } from "next";
 
 export default function ViewContainer() {
-
   return (
-    <LayoutApp title="Ciber Ruta">
+    <LayoutApp title="Register">
       <Stack
         alignItems={"center"}
-        h={"100vh"}
         justifyContent={"center"}
         bg="gray.100"
       >
@@ -21,13 +20,23 @@ export default function ViewContainer() {
           position="relative"
           gap={0}
         >
-          {/* Menu Superior */}
-          <MenuRouter />
 
-          {/* Vistas */}
-          <TransitionView />
+          <ViewRegister />
         </Stack>
       </Stack>
     </LayoutApp>
   );
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+
+  // Sincronizando modelos cuando se entra en el login
+  await Manager()
+
+  return {
+    props: {
+
+    }
+  }
+
 }

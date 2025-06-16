@@ -6,6 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ButtonBarRecord } from '../ButtonBarRecord';
 import { ViewAbout } from '@/views/about';
 import { ViewProfile } from '@/views/profile';
+import { useSession } from 'next-auth/react';
+import { Fragment } from 'react';
+import { ViewDriverHome } from '@/views/driver';
 
 const TransitionView = () => {
     const { viewShow } = useViewChange();
@@ -23,7 +26,9 @@ const TransitionView = () => {
                         height: '100%'
                     }}
                 >
-                    {renderView(viewShow)}
+                    <RenderView
+                        viewId={viewShow}
+                    />
                 </motion.div>
             </AnimatePresence>
         </Stack>
@@ -31,13 +36,28 @@ const TransitionView = () => {
 };
 
 // Poner todas las vistas a renderizar
-const renderView = (viewId: number) => {
+const RenderView = ({
+    viewId
+}: {
+    viewId: number
+}) => {
+    const { data: session } = useSession()
+    const isClient = session?.user.role == 'client'
+
     switch (viewId) {
         case 0: return (
-            <Stack flexDir={'column'} h={'100%'}>
-                <ViewHome />
-                <ButtonBarRecord />
-            </Stack>
+            <Fragment>
+                {isClient ? (
+                    <Stack flexDir={'column'} h={'100%'}>
+                        <ViewHome />
+                        <ButtonBarRecord />
+                    </Stack>
+                ) : (
+                    <ViewDriverHome />
+                )}
+
+            </Fragment>
+
         );
         case 1: return <ViewAbout />;
         case 2: return <ViewMap />;

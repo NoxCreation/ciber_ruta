@@ -103,6 +103,33 @@ export class Model {
     }
 }
 
+export async function testConnection() {
+    try {
+        await sequelize.authenticate()
+        console.log("Conexión establecida correctamente.")
+        return true
+    } catch (error) {
+        console.error("No se pudo conectar a la base de datos:", error)
+        return false
+    }
+}
+
+
+export async function syncDatabase() {
+    try {
+        // Sincroniza todos los modelos
+        // force: true -> DROP TABLES (¡Cuidado! Solo usar en desarrollo)
+        // alter: true -> Altera las tablas existentes para que coincidan con los modelos
+        Manager()
+        await sequelize.sync({ alter: true });
+        console.log("Base de datos sincronizada correctamente");
+        return true;
+    } catch (error) {
+        console.error("Error al sincronizar la base de datos:", error);
+        return false;
+    }
+}
+
 export function sleep(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }

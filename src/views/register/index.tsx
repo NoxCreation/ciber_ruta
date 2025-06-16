@@ -80,9 +80,9 @@ export const ViewRegister = () => {
       topGradientPercent={0}
       bottomGradientPercent={0}
     >
-      <Container maxW="md" py={{ base: '12', md: '24' }}>
+      <Container maxW="md" mt={4}>
         <Stack gap="8">
-          <VStack gap="12">
+          <VStack gap="4">
             <Logo />
             <VStack gap="2">
               <Heading size="2xl" style={{ color: "#283c77" }}>Regístro en CibeRuta</Heading>

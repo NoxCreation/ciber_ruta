@@ -25,6 +25,10 @@ export const UserModel = () => {
             type: DataTypes.STRING,
             defaultValue: 'user'
         },
+        interface: {
+            type: DataTypes.TEXT,
+            defaultValue: '{viewId: 0,data: {}}'
+        },
         password_hash: {
             type: DataTypes.STRING,
             allowNull: true

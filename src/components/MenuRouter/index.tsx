@@ -18,12 +18,12 @@ export const MenuRouter = () => {
                     <Tabs.Trigger value="members" onClick={() => useViewChange.getState().setView(0)}>
                         Principal
                     </Tabs.Trigger>
-                    <Tabs.Trigger value="projects" onClick={() => useViewChange.getState().setView(1)}>
+                    {/* <Tabs.Trigger value="projects" onClick={() => useViewChange.getState().setView(1)}>
                         Sobre Este Proyecto
                     </Tabs.Trigger>
                     <Tabs.Trigger value="login" onClick={() => useViewChange.getState().setView(3)}>
                         Profile
-                    </Tabs.Trigger>
+                    </Tabs.Trigger> */}
                     <Tabs.Trigger value="logout" onClick={onSignOut}>
                         Salir
                     </Tabs.Trigger>

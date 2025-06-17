@@ -17,7 +17,7 @@ export const ChangeDetected = ({
     const reconnectRef = useRef<NodeJS.Timeout | null>(null);
     const { data: session } = useSession();
     const userId = session ? session?.user.id : "";
-    const { setStateConection } = useConectWS()
+    const { setStateConection, setDataInterface } = useConectWS()
 
     const connectWebSocket = () => {
         // Cerrar cualquier conexión existente
@@ -49,8 +49,10 @@ export const ChangeDetected = ({
 
         ws.onmessage = (event) => {
             const message = JSON.parse(event.data);
-            const viewId  = JSON.parse(message.data.interface).viewId
+            const body = JSON.parse(message.data.interface)
+            const viewId  = body.viewId
             useViewChange.getState().setView(viewId)
+            setDataInterface(body.data)
         };
 
         ws.onerror = (error) => {

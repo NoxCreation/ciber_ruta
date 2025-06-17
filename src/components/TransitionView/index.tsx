@@ -10,6 +10,7 @@ import { useSession } from 'next-auth/react';
 import { Fragment } from 'react';
 import { ViewDriverHome } from '@/views/driver';
 import useConectWS from '@/hooks/useConectWS';
+import { ViewSelectMap } from '@/views/selectMap';
 
 const TransitionView = () => {
     const { viewShow } = useViewChange();
@@ -61,7 +62,7 @@ const RenderView = ({
                 </Fragment>
 
             );
-            case 1: return <ViewAbout />;
+            case 1: return <ViewSelectMap />;
             case 2: return <ViewMap />;
             case 3: return <ViewProfile />;
             default: return null;
